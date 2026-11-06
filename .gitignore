@@ -1,0 +1,13 @@
+# macOS and editors
+.DS_Store
+*.swp
+*~
+
+# Build output, logs and anything the engine writes beside a mod while developing it
+.build/
+.swiftpm/
+node_modules/
+*.log
+.claude-plugin/types/
+plugins/*/.claude-plugin/types/
+plugins/*/tsconfig.json

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "kushaal-mods",
+  "description": "Kushaal's mods for Claude Code",
+  "owner": {
+    "name": "Kushaal Rana"
+  },
+  "plugins": [
+    {
+      "name": "live-voice",
+      "description": "Talk with Claude out loud: it reads Claude's answers in a natural local voice, and you can talk over it to pause, ask a question or give a command",
+      "author": {
+        "name": "Kushaal Rana"
+      },
+      "source": "./plugins/live-voice",
+      "category": "productivity"
+    }
+  ]
+}
