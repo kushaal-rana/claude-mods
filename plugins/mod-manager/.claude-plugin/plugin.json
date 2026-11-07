@@ -1,0 +1,8 @@
+{
+  "name": "mod-manager",
+  "version": "1.0.0",
+  "description": "A Mods pane with a colorful card for every installed mod: what it does, how to use it, and an on/off switch",
+  "author": { "name": "Kushaal Rana" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

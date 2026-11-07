@@ -1,0 +1,8 @@
+{
+  "name": "subagents",
+  "version": "1.0.0",
+  "description": "A side pane with one colorful live card per subagent: its task, model, the step it's on, a progress bar, tool calls, tokens and time",
+  "author": { "name": "Kushaal Rana" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

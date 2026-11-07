@@ -32,6 +32,24 @@
       },
       "source": "./plugins/usage-card",
       "category": "productivity"
+    },
+    {
+      "name": "subagents",
+      "description": "A side pane with one colorful live card per subagent: its task, model, the step it's on, a progress bar, tool calls, tokens and time",
+      "author": {
+        "name": "Kushaal Rana"
+      },
+      "source": "./plugins/subagents",
+      "category": "productivity"
+    },
+    {
+      "name": "mod-manager",
+      "description": "A Mods pane with a colorful card for every installed mod: what it does, how to use it, and an on/off switch",
+      "author": {
+        "name": "Kushaal Rana"
+      },
+      "source": "./plugins/mod-manager",
+      "category": "productivity"
     }
   ]
 }

@@ -2,6 +2,24 @@
 
 Each release is tagged `<mod>-v<version>` in git.
 
+## mod-manager 1.0.0 (2026-11-07)
+
+First release.
+
+- `/mods` opens a Mods pane with a colorful card for every installed mod: its emoji, what it does, how to use it, its version and where it came from.
+- A green On or gray Off switch on each card runs Claude Code's own `claude plugin enable` or `disable`. New chats get the change; `/reload-plugins` applies it in a chat already open.
+- Mods from any marketplace show up by themselves, described by their own manifest and the slash commands they register. Plugins that aren't mods stay out.
+- The manager's own card is always on, so the pane can't switch itself off.
+
+## subagents 1.0.0 (2026-11-07)
+
+First release.
+
+- A Subagents pane that opens by itself when Claude starts its first subagent in a chat. `/subagents` opens or closes it.
+- One live card per subagent in its own color: the task, agent type and model, the step it's on, a moving bar, tool calls, tokens and time.
+- Cards turn green when done, red when failed and gray when stopped. Clear finished (or `/subagents clear`) removes the finished ones.
+- The top of the pane counts working and finished subagents and shows the chat's cost so far at API prices.
+
 ## usage-card 1.1.0 (2026-11-06)
 
 - The card is open in every chat, so it's always in view.

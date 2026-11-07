@@ -7,6 +7,8 @@ Mods for the [Claude Code](https://claude.com/claude-code) desktop app: plugins 
 | [🎙 live-voice](#-live-voice) | Talk with Claude out loud. It reads Claude's answers in a natural voice, and you can talk over it to pause, ask a question or give a command. |
 | [🔔 chime](#-chime) | A soft sound when Claude finishes a longer reply, and a different one when Claude needs your answer or OK. |
 | [📊 usage-card](#-usage-card) | A card above the prompt with your context, every limit and when it resets, and the session's time and cost, plus a short pill in the bottom bar. |
+| [🤖 subagents](#-subagents) | A live, colorful card for each subagent Claude starts: the step it's on, its progress, tokens and time. |
+| [🧩 mod-manager](#-mod-manager) | `/mods` shows every mod you have, what it does and how to use it, with an on/off switch for each. |
 
 ## Install
 
@@ -26,6 +28,14 @@ claude plugin install chime@kushaal-mods
 
 ```bash
 claude plugin install usage-card@kushaal-mods
+```
+
+```bash
+claude plugin install subagents@kushaal-mods
+```
+
+```bash
+claude plugin install mod-manager@kushaal-mods
 ```
 
 live-voice also needs its small audio helper, built once on your Mac (about three minutes):
@@ -76,6 +86,27 @@ See how much of your context and usage limits a chat has used, without asking.
 
 Full guide: [plugins/usage-card/README.md](plugins/usage-card/README.md).
 
+### 🤖 subagents
+
+Watch each subagent work. A side pane opens by itself the first time Claude starts one in a chat.
+
+- One card per subagent in its own color: the task, agent type and model, and the step it's on right now (*Reading README.md*).
+- A bar that moves while it works, then turns green when it's done, red if it failed, or gray if it was stopped.
+- Tool calls, tokens and time on each card, and the chat's cost so far at the top.
+- `/subagents` opens or closes the pane, and **Clear finished** tidies it.
+
+Full guide: [plugins/subagents/README.md](plugins/subagents/README.md).
+
+### 🧩 mod-manager
+
+Every mod you have, in one place, with a switch for each.
+
+- `/mods` opens a pane with a colorful card per mod: what it does, how to use it, its version and where it came from.
+- A green **On** or gray **Off** switch runs Claude Code's own enable or disable. New chats get the change, and `/reload-plugins` applies it in an open chat.
+- Mods from any marketplace show up by themselves. Plugins that aren't mods, like skills or connectors, stay out.
+
+Full guide: [plugins/mod-manager/README.md](plugins/mod-manager/README.md).
+
 ## Updating
 
 ```bash
@@ -92,6 +123,14 @@ claude plugin update chime@kushaal-mods
 
 ```bash
 claude plugin update usage-card@kushaal-mods
+```
+
+```bash
+claude plugin update subagents@kushaal-mods
+```
+
+```bash
+claude plugin update mod-manager@kushaal-mods
 ```
 
 ## Versions and rolling back
