@@ -9,6 +9,7 @@ Mods for the [Claude Code](https://claude.com/claude-code) desktop app: plugins 
 | [📊 usage-card](#-usage-card) | A card above the prompt with your context, every limit and when it resets, and the session's time and cost, plus a short pill in the bottom bar. |
 | [🤖 subagents](#-subagents) | A live, colorful card for each subagent Claude starts: the step it's on, its progress, tokens and time. |
 | [🧩 mod-manager](#-mod-manager) | `/mods` shows every mod you have, what it does and how to use it, with an on/off switch for each. |
+| [☕ break-reminder](#-break-reminder) | A countdown to your next break in the bottom bar, then a "Take a break" toast, a soft sound and drifting bubbles every 15 minutes of work. |
 
 ## Install
 
@@ -38,6 +39,10 @@ claude plugin install subagents@kushaal-mods
 claude plugin install mod-manager@kushaal-mods
 ```
 
+```bash
+claude plugin install break-reminder@kushaal-mods
+```
+
 live-voice also needs its small audio helper, built once on your Mac (about three minutes):
 
 ```bash
@@ -47,7 +52,7 @@ claude-mods/plugins/live-voice/scripts/install-helper.sh
 
 Then open a new chat, or type `/reload-plugins` in an open one. `/plugin` doesn't run inside the desktop app, so run these commands in a terminal.
 
-**Requirements:** a recent Claude Code (tested on 2.1.317). live-voice also needs macOS 26 on Apple Silicon and Apple's command line tools for building the helper (`xcode-select --install`). chime needs macOS.
+**Requirements:** a recent Claude Code (tested on 2.1.317). live-voice also needs macOS 26 on Apple Silicon and Apple's command line tools for building the helper (`xcode-select --install`). chime needs macOS, and so do break-reminder's sound and banner.
 
 ## Mods
 
@@ -107,6 +112,17 @@ Every mod you have, in one place, with a switch for each.
 
 Full guide: [plugins/mod-manager/README.md](plugins/mod-manager/README.md).
 
+### ☕ break-reminder
+
+A nudge to step away from the screen, on one clock for all your chats.
+
+- A ☕ pill in the bottom bar counts down to your next break (*☕ 12m*). Click it after a break to start the clock over.
+- Every 15 minutes of work: a "☕ Take a break" toast, Aurora's soft tone, and bubbles with a few sparkles drifting up above the message box. A Mac banner too when you're in another app.
+- 10 minutes with no message counts as a break, and the sound plays once however many chats are open. Quiet during a live-voice chat.
+- `/break every 30` changes how often, `/break test` previews it, and `/break` shows the rest: 20 sounds that ship with macOS, bubbles off, and on and off.
+
+Full guide: [plugins/break-reminder/README.md](plugins/break-reminder/README.md).
+
 ## Updating
 
 ```bash
@@ -131,6 +147,10 @@ claude plugin update subagents@kushaal-mods
 
 ```bash
 claude plugin update mod-manager@kushaal-mods
+```
+
+```bash
+claude plugin update break-reminder@kushaal-mods
 ```
 
 ## Versions and rolling back

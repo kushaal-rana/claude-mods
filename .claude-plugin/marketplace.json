@@ -50,6 +50,15 @@
       },
       "source": "./plugins/mod-manager",
       "category": "productivity"
+    },
+    {
+      "name": "break-reminder",
+      "description": "A ☕ countdown to your next break in the bottom bar, then a \"Take a break\" toast, a soft sound and drifting bubbles every 15 minutes of work",
+      "author": {
+        "name": "Kushaal Rana"
+      },
+      "source": "./plugins/break-reminder",
+      "category": "productivity"
     }
   ]
 }

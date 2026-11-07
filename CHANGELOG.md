@@ -2,6 +2,18 @@
 
 Each release is tagged `<mod>-v<version>` in git.
 
+## break-reminder 1.0.0 (2026-11-07)
+
+First release.
+
+- A ☕ pill in the prompt's bottom bar counts down to the next break, and reads "Break time" for a minute after a reminder. Clicking it starts the clock over.
+- Every 15 minutes of work: a "☕ Take a break" toast, Aurora's soft tone, and bubbles with sparkles drifting up a strip above the message box for about 8 seconds. A Mac banner when you're in another app.
+- One clock for every chat on the Mac, kept in the mod's store. Every open chat shows the toast; only one plays the sound.
+- 10 minutes with no message in any chat counts as a break. Only your own messages count as work, not scheduled tasks or other sessions.
+- Quiet during a live-voice chat.
+- `/break` commands: every, test (which reports what each part did), restart, sound (20 tones that ship with macOS), bubbles, on and off.
+- The bubbles ask for a full-window backdrop first, and use the strip because today's desktop app doesn't draw backdrops yet.
+
 ## mod-manager 1.0.0 (2026-11-07)
 
 First release.

@@ -1,0 +1,8 @@
+{
+  "name": "break-reminder",
+  "version": "1.0.0",
+  "description": "A ☕ countdown to your next break in the bottom bar, then a \"Take a break\" toast, a soft sound and drifting bubbles every 15 minutes of work",
+  "author": { "name": "Kushaal Rana" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}
