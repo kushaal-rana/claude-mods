@@ -26,7 +26,7 @@
     },
     {
       "name": "usage-card",
-      "description": "A pill in the bottom bar with your context and 5-hour usage; click it for a card with context, usage limits and their resets, session time and cost",
+      "description": "A card above the prompt in every chat with your context, usage limits and their resets, session time and cost, plus a short pill in the bottom bar",
       "author": {
         "name": "Kushaal Rana"
       },

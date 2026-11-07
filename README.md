@@ -6,7 +6,7 @@ Mods for the [Claude Code](https://claude.com/claude-code) desktop app: plugins 
 | :---- | :---- |
 | [🎙 live-voice](#-live-voice) | Talk with Claude out loud. It reads Claude's answers in a natural voice, and you can talk over it to pause, ask a question or give a command. |
 | [🔔 chime](#-chime) | A soft sound when Claude finishes a longer reply, and a different one when Claude needs your answer or OK. |
-| [📊 usage-card](#-usage-card) | Your context and 5-hour usage in the bottom bar. Click it for a card with every limit, when it resets, and the session's time and cost. |
+| [📊 usage-card](#-usage-card) | A card above the prompt with your context, every limit and when it resets, and the session's time and cost, plus a short pill in the bottom bar. |
 
 ## Install
 
@@ -70,8 +70,8 @@ Full guide: [plugins/chime/README.md](plugins/chime/README.md).
 See how much of your context and usage limits a chat has used, without asking.
 
 - A pill beside the model picker shows the context, then the 5-hour limit (*38% · 12%*). It fits beside live-voice's Voice on.
-- Click it for a card above the message box: context with tokens used, the 5-hour and weekly limits with when they reset, and the session's length and API-price cost.
-- Meters turn orange at 70% and red at 90%. **Hide** closes the card, and `/usage-card` toggles it.
+- A card above the message box, open in every chat: context with tokens used, the 5-hour and weekly limits with when they reset, and the session's length and API-price cost.
+- Meters turn orange at 70% and red at 90%. **Hide** closes the card for that chat, and the pill or `/usage-card` brings it back.
 - Refreshes every 5 seconds and after every reply. It reads only the session's own figures and sends nothing anywhere.
 
 Full guide: [plugins/usage-card/README.md](plugins/usage-card/README.md).

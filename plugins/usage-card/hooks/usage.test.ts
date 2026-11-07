@@ -45,13 +45,9 @@ test('the bottom-bar pill shows context and the 5-hour limit, short, after what 
   expect(drawn).toContain('"type":"engine"')
 })
 
-test('the card starts hidden, and the pill opens it', async ($, on) => {
+test('the card is open in a new chat, with every figure and only a Hide button', async ($, on) => {
   await setup($, on)
   const card = await $.ui.mount({ plugin: 'usage-card', surface: 'desktop', component: 'AbovePrompt', props: band })
-  expect(JSON.stringify(await card.drawn())).not.toContain('5-hour limit')
-
-  const pill = await $.ui.mount({ plugin: 'usage-card', surface: 'desktop', component: 'SessionMode', props: bar })
-  await pill.press({ key: 'usage-pill' })
 
   const drawn = JSON.stringify(await card.drawn())
   expect(drawn).toContain('383k of 1M tokens')
@@ -65,8 +61,8 @@ test('the card starts hidden, and the pill opens it', async ($, on) => {
 })
 
 for (const surface of ['desktop', 'terminal'] as const) {
-  test(`draws the card on the ${surface} when it was left open`, async ($, on) => {
-    await setup($, on, { isOpen: true })
+  test(`draws the card on the ${surface}`, async ($, on) => {
+    await setup($, on)
     const ui = await $.ui.mount({ plugin: 'usage-card', surface, component: 'AbovePrompt', props: band })
     const drawn = JSON.stringify(await ui.drawn())
 
@@ -77,13 +73,24 @@ for (const surface of ['desktop', 'terminal'] as const) {
   })
 }
 
-test('Hide closes the card', async ($, on) => {
-  await setup($, on, { isOpen: true })
+test('Hide closes the card, and the pill opens it again', async ($, on) => {
+  await setup($, on)
   const ui = await $.ui.mount({ plugin: 'usage-card', surface: 'desktop', component: 'AbovePrompt', props: band })
   expect(JSON.stringify(await ui.drawn())).toContain('5-hour limit')
 
   await ui.press({ key: 'hide' })
   expect(JSON.stringify(await ui.drawn())).not.toContain('5-hour limit')
+
+  const pill = await $.ui.mount({ plugin: 'usage-card', surface: 'desktop', component: 'SessionMode', props: bar })
+  await pill.press({ key: 'usage-pill' })
+  expect(JSON.stringify(await ui.drawn())).toContain('5-hour limit')
+})
+
+test('a Hide saved by version 1.0.0 no longer keeps the card closed', async ($, on) => {
+  await setup($, on, { isOpen: false })
+  const ui = await $.ui.mount({ plugin: 'usage-card', surface: 'desktop', component: 'AbovePrompt', props: band })
+
+  expect(JSON.stringify(await ui.drawn())).toContain('5-hour limit')
 })
 
 test('the pill reads "Ctx" alone when the plan reports no limits', async ($, on) => {
@@ -97,6 +104,9 @@ test('/usage-card toggles the card', async ($, on) => {
   await setup($, on)
   const ui = await $.ui.mount({ plugin: 'usage-card', surface: 'desktop', component: 'AbovePrompt', props: band })
   await $.command.run({ command: 'usage-card', args: '' } as any)
+  expect(JSON.stringify(await ui.drawn())).not.toContain('Weekly limit')
+
+  await $.command.run({ command: 'usage-card', args: 'on' } as any)
   expect(JSON.stringify(await ui.drawn())).toContain('Weekly limit')
 
   await $.command.run({ command: 'usage-card', args: 'off' } as any)

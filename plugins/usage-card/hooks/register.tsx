@@ -4,7 +4,8 @@ import type { EngineInterface, Register, RenderChildren } from 'claude-code'
 import type { Limit, Snapshot } from '../types'
 
 const snapshot = atom({ plugin: 'usage-card', key: 'snapshot' } as const, null)
-const isOpen = atom({ plugin: 'usage-card', key: 'isOpen' } as const, false)
+// Open in every chat. Hide closes it for this chat only: the next chat opens it again.
+const isOpen = atom({ plugin: 'usage-card', key: 'isOpen' } as const, true)
 
 const REFRESH_MS = 5_000
 
@@ -108,22 +109,17 @@ const refresh = async ($: EngineInterface) => {
   }
 }
 
-const setOpen = async ($: EngineInterface, shown: boolean) => {
-  await update($, isOpen, () => shown)
-  await $.store.set('isOpen', shown)
-}
+const setOpen = ($: EngineInterface, shown: boolean) => update($, isOpen, () => shown)
 
 export const register: Register = on => {
   on('session.start', async ($, e, next) => {
     const started = await next(e)
     await $.command.register({
       name: 'usage-card',
-      description: 'Show or hide the usage card above the message box',
+      description: 'Show or hide the usage card above the message box in this chat',
       argumentHint: '[on|off]',
       immediate: true,
     })
-    const saved = await $.store.get('isOpen')
-    await update($, isOpen, () => saved === true)
     // A first reading that fails still leaves the timer running: the pill fills in on its next tick.
     await refresh($).catch(() => {})
     $.clock.every(REFRESH_MS, () => void refresh($).catch(() => {}))
@@ -136,7 +132,7 @@ export const register: Register = on => {
     const shown = arg === 'on' ? true : arg === 'off' ? false : !(await read($, isOpen))
     await setOpen($, shown)
 
-    return { text: shown ? 'Usage card shown.' : 'Usage card hidden. The pill in the bottom bar or `/usage-card` brings it back.' }
+    return { text: shown ? 'Usage card shown.' : 'Usage card hidden in this chat. The pill in the bottom bar or `/usage-card` brings it back.' }
   })
 
   on('turn.complete', async ($, e, next) => {

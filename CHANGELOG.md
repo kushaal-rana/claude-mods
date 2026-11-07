@@ -2,6 +2,12 @@
 
 Each release is tagged `<mod>-v<version>` in git.
 
+## usage-card 1.1.0 (2026-11-06)
+
+- The card is open in every chat, so it's always in view.
+- Hide closes it in that chat only; the next chat opens it again. Clicking the pill or `/usage-card` brings it back in the same chat.
+- A Hide saved by 1.0.0 no longer keeps the card closed everywhere.
+
 ## usage-card 1.0.0 (2026-11-06)
 
 First release.
