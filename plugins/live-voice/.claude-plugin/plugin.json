@@ -1,6 +1,6 @@
 {
   "name": "live-voice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Live voice chat for Claude Code: a Talk button in the bottom bar; reads Claude's answers aloud in a natural local voice and lets you talk back hands-free.",
   "types": "./types/index.d.ts",
   "author": {

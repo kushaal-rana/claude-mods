@@ -2,6 +2,10 @@
 
 Each release is tagged `<mod>-v<version>` in git.
 
+## live-voice 1.0.1 (2026-11-07)
+
+- The Talk button no longer hides other mods' buttons in the bottom bar. It drew over them, so break-reminder's ☕ pill and usage-card's pill never showed; now they sit beside it.
+
 ## break-reminder 1.0.0 (2026-11-07)
 
 First release.

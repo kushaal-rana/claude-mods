@@ -660,14 +660,16 @@ export const register: Register = on => {
     return done
   })
 
-  // A Talk button in the prompt's bottom bar, beside the app's own mode labels.
-  on('ui.render', { component: 'SessionMode' }, async ($, e) => {
+  // A Talk button in the prompt's bottom bar, after what the app and other mods draw there (break-reminder's ☕
+  // pill, usage-card's pill). Passing `next` along keeps their pills; dropping it hid them.
+  on('ui.render', { component: 'SessionMode' }, async ($, e, next) => {
+    const beside = await next(e)
     const { Box, Text, Button } = $.ui.resolve(e)
     const active = await read($, isOn)
     const modes = e.props.modes
     return (
       <Box flexDirection="row" gap="sm" alignItems="center">
-        {modes.length ? <Text dimColor>{modes.join(' & ')}</Text> : null}
+        {beside ?? (modes.length ? <Text dimColor>{modes.join(' & ')}</Text> : null)}
         <Button
           key="talk"
           label={active ? '🎙 Voice on' : '🎙 Talk'}
