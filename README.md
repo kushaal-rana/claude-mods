@@ -5,8 +5,8 @@ Mods for the [Claude Code](https://claude.com/claude-code) desktop app: plugins 
 | Mod | What it does |
 | :---- | :---- |
 | [🎙 live-voice](#-live-voice) | Talk with Claude out loud. It reads Claude's answers in a natural voice, and you can talk over it to pause, ask a question or give a command. |
-
-More are on the way: a completion chime and a session usage card.
+| [🔔 chime](#-chime) | A soft sound when Claude finishes a longer reply, and a different one when Claude needs your answer or OK. |
+| [📊 usage-card](#-usage-card) | Your context and 5-hour usage in the bottom bar. Click it for a card with every limit, when it resets, and the session's time and cost. |
 
 ## Install
 
@@ -20,6 +20,14 @@ claude plugin marketplace add https://github.com/kushaal-rana/claude-mods.git
 claude plugin install live-voice@kushaal-mods
 ```
 
+```bash
+claude plugin install chime@kushaal-mods
+```
+
+```bash
+claude plugin install usage-card@kushaal-mods
+```
+
 live-voice also needs its small audio helper, built once on your Mac (about three minutes):
 
 ```bash
@@ -29,7 +37,7 @@ claude-mods/plugins/live-voice/scripts/install-helper.sh
 
 Then open a new chat, or type `/reload-plugins` in an open one. `/plugin` doesn't run inside the desktop app, so run these commands in a terminal.
 
-**Requirements:** macOS 26 on Apple Silicon, a recent Claude Code (tested on 2.1.317), and Apple's command line tools for building the helper (`xcode-select --install`).
+**Requirements:** a recent Claude Code (tested on 2.1.317). live-voice also needs macOS 26 on Apple Silicon and Apple's command line tools for building the helper (`xcode-select --install`). chime needs macOS.
 
 ## Mods
 
@@ -45,6 +53,29 @@ Press **🎙 Talk** in the prompt's bottom bar and Claude's answers are read to 
 
 Full guide and troubleshooting: [plugins/live-voice/README.md](plugins/live-voice/README.md).
 
+### 🔔 chime
+
+Look away while Claude works, and a sound tells you it's done. A different tone means Claude is waiting on you.
+
+- Glass plays when a reply took 15 seconds or more. Quick replies, interrupted replies and subagents stay quiet.
+- iMessage's question tone plays when Claude asks you something, has a plan to approve, or needs a permission.
+- Give a chat its own sound with `/chime sound tink here`, so you can tell by ear which chat finished.
+- Quiet during a live-voice chat, so the microphone never hears it.
+- `/chime` shows the settings and every command: on and off, the threshold, and 16 sounds that ship with macOS.
+
+Full guide: [plugins/chime/README.md](plugins/chime/README.md).
+
+### 📊 usage-card
+
+See how much of your context and usage limits a chat has used, without asking.
+
+- A pill beside the model picker shows the context, then the 5-hour limit (*38% · 12%*). It fits beside live-voice's Voice on.
+- Click it for a card above the message box: context with tokens used, the 5-hour and weekly limits with when they reset, and the session's length and API-price cost.
+- Meters turn orange at 70% and red at 90%. **Hide** closes the card, and `/usage-card` toggles it.
+- Refreshes every 5 seconds and after every reply. It reads only the session's own figures and sends nothing anywhere.
+
+Full guide: [plugins/usage-card/README.md](plugins/usage-card/README.md).
+
 ## Updating
 
 ```bash
@@ -53,6 +84,14 @@ claude plugin marketplace update kushaal-mods
 
 ```bash
 claude plugin update live-voice@kushaal-mods
+```
+
+```bash
+claude plugin update chime@kushaal-mods
+```
+
+```bash
+claude plugin update usage-card@kushaal-mods
 ```
 
 ## Versions and rolling back

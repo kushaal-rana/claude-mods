@@ -2,6 +2,25 @@
 
 Each release is tagged `<mod>-v<version>` in git.
 
+## usage-card 1.0.0 (2026-11-06)
+
+First release.
+
+- A pill in the prompt's bottom bar, beside the model picker, with the context and the 5-hour limit (*38% · 12%*). It's kept short to fit beside live-voice's "🎙 Voice on".
+- Clicking the pill opens a card above the message box: context with tokens used, the 5-hour and weekly limits with when they reset, and the session's length and API-price cost.
+- Meters turn orange at 70% and red at 90%. The card has one button, Hide, and only reports.
+- `/usage-card` toggles the card. Open or closed is remembered across chats. Figures refresh every 5 seconds and after every reply.
+
+## chime 1.0.0 (2026-11-06)
+
+First release.
+
+- Glass plays when a reply took 15 seconds or more. Quicker replies, interrupted replies and subagents stay quiet.
+- iMessage's question tone plays when Claude needs you: a question, a plan to approve or a permission prompt.
+- Quiet during a live-voice chat, so its microphone never hears the chime.
+- `/chime` commands for on and off, test, the threshold, the reply and "needs you" sounds, and a sound of a chat's own (`/chime sound tink here`).
+- 16 sounds, all shipped with macOS, so the mod carries no audio.
+
 ## live-voice 1.0.0 (2026-11-06)
 
 First release.

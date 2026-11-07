@@ -1,0 +1,7 @@
+{
+  "name": "chime",
+  "version": "1.0.0",
+  "description": "A soft sound when Claude finishes a longer reply, and a different one when Claude needs your answer or OK",
+  "author": { "name": "Kushaal Rana" },
+  "license": "MIT"
+}

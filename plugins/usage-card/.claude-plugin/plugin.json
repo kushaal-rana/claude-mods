@@ -1,0 +1,8 @@
+{
+  "name": "usage-card",
+  "version": "1.0.0",
+  "description": "A pill in the bottom bar with your context and 5-hour usage; click it for a card with context, usage limits and their resets, session time and cost",
+  "author": { "name": "Kushaal Rana" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}
